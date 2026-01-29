@@ -1,0 +1,54 @@
+##################################################################
+# QUICK FIX - Update Your .env File
+##################################################################
+
+Your Colab creates TWO ngrok tunnels:
+1. Ollama URL: https://79218ab62db7.ngrok-free.app (port 11434)
+2. Flask URL: https://95c35af04824.ngrok-free.app (port 5000)
+
+##################################################################
+# PROBLEM
+##################################################################
+
+Your .env currently has:
+OLLAMA_HOST=https://95c35af04824.ngrok-free.app/proxy_ollama
+
+This is the Flask proxy endpoint, but ChatOllama needs the direct
+Ollama API endpoint.
+
+##################################################################
+# SOLUTION
+##################################################################
+
+Update your .env file to use the OLLAMA URL instead:
+
+OLLAMA_HOST=https://79218ab62db7.ngrok-free.app
+OLLAMA_MODEL=phi
+VISION_URL=https://95c35af04824.ngrok-free.app
+
+##################################################################
+# STEPS
+##################################################################
+
+1. Open .env file in notepad:
+   notepad .env
+
+2. Change OLLAMA_HOST line to:
+   OLLAMA_HOST=https://79218ab62db7.ngrok-free.app
+
+3. Save and close
+
+4. Run Jarvis again:
+   python -m main.runner
+
+##################################################################
+# WHY?
+##################################################################
+
+- ChatOllama expects standard Ollama API paths (/api/chat)
+- Your Flask /proxy_ollama is a custom wrapper
+- The direct Ollama tunnel (port 11434) has the standard API
+- Vision still uses Flask URL (that's correct)
+
+##################################################################
+

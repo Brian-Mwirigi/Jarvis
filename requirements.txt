@@ -1,3 +1,4 @@
+# Core LangChain and LLM
 langchain==0.3.26
 langchain-community==0.3.27
 langchain-core==0.3.70
@@ -5,13 +6,41 @@ langchain-ollama==0.3.5
 langchain-openai==0.3.28
 ollama==0.5.1
 openai==1.97.0
+
+# Environment and utilities
 python-dotenv==1.1.1
-pyttsx3==2.99
 pytz==2025.2
+requests==2.31.0
+
+# Speech Recognition (STT)
 SpeechRecognition==3.14.3
 PyAudio==0.2.14
+faster-whisper==1.0.3
 
-# Additional tool dependencies
+# Text-to-Speech (Azure)
+azure-cognitiveservices-speech==1.46.0
+
+# Screenshot and OCR tools
 mss==10.0.0
-duckduckgo-search==8.1.1
 pytesseract==0.3.13
+Pillow==10.4.0
+
+# Web search
+duckduckgo-search==8.1.1
+
+# Vision module (remote via Colab, but PIL needed locally)
+opencv-python==4.12.0.88
+
+# Memory / Vector Database
+chromadb>=0.4.0
+
+# New features
+pyperclip==1.8.2  # Clipboard operations
+deep-translator==1.11.4  # Translation (no API key needed)
+langdetect==1.0.9  # Language detection for translation
+PyPDF2==3.0.1  # PDF reading
+python-docx==1.1.0  # Word document reading
+pyautogui==0.9.54  # Music control (media keys)
+
+# Platform-specific (Windows only)
+# pywin32 - Automatically installed on Windows for COM/PowerShell access

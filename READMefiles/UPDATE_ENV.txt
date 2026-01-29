@@ -1,0 +1,46 @@
+##################################################################
+# UPDATE YOUR .env FILE
+##################################################################
+
+The Ollama direct tunnel (port 11434) is returning 403 errors.
+This means it's either expired or blocked by ngrok.
+
+SOLUTION: Use the Flask /proxy_ollama endpoint instead!
+
+##################################################################
+# CHANGE YOUR .env TO:
+##################################################################
+
+OLLAMA_HOST=https://YOUR_NGROK_URL.ngrok-free.app/proxy_ollama
+OLLAMA_MODEL=phi
+VISION_URL=https://YOUR_NGROK_URL.ngrok-free.app
+AZURE_SPEECH_KEY=your_azure_speech_key_here
+AZURE_REGION=southafricanorth
+AZURE_VOICE=en-US-JennyNeural
+
+##################################################################
+# WHY THIS WORKS:
+##################################################################
+
+✅ Flask tunnel is working (we tested /health)
+✅ Created custom OllamaProxyAdapter to handle /proxy_ollama
+✅ Adapter automatically detected when URL contains /proxy_ollama
+✅ No more 403 errors!
+
+##################################################################
+# STEPS:
+##################################################################
+
+1. Open .env:
+   notepad .env
+
+2. Change OLLAMA_HOST to:
+   OLLAMA_HOST=https://95c35af04824.ngrok-free.app/proxy_ollama
+
+3. Save and close
+
+4. Run Jarvis:
+   python -m main.runner
+
+##################################################################
+
